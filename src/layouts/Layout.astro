@@ -1,5 +1,12 @@
 ---
+import SidebarLeft from "@/components/SidebarLeft.astro"
 import "./src/styles/global.css"
+
+interface Props {
+	title: string
+}
+
+const { title } = Astro.props
 ---
 
 <!doctype html>
@@ -9,10 +16,20 @@ import "./src/styles/global.css"
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
 	</head>
 	<body>
-		<slot />
+		<main id="app" class="relative h-screen p-2 gap-2">
+			<header class="[grid-area:header] bg-gray-200">HEADER</header>
+			<aside class="[grid-area:sidebar-left] flex flex-col overflow-y-auto bg-gray-200">
+				<SidebarLeft />
+			</aside>
+			<main class="[grid-area:main] rounded-lg bg-zinc-900 overflow-y-auto text-white">
+				MAIN
+			</main>
+			<aside class="[grid-area:sidebar-right] bg-gray-200">SIDEBAR RIGHT</aside>
+			<footer class="[grid-area:player] h-[100px] bg-black text-white">PLAYER</footer>
+		</main>
 	</body>
 </html>
 
@@ -22,5 +39,16 @@ import "./src/styles/global.css"
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-color: black;
+	}
+
+	#app {
+		display: grid;
+		grid-template-areas:
+			"header header header"
+			"sidebar-left main sidebar-right"
+			"player player player";
+		grid-template-columns: clamp(280px, 25%, 420px) 1fr clamp(280px, 25%, 420px);
+		grid-template-rows: auto 1fr auto;
 	}
 </style>
