@@ -1,0 +1,56 @@
+---
+import LibraryIcon from "@/icons/LibraryIcon.astro"
+import PlusIcon from "@/icons/PlusIcon.astro"
+import RightArrowIcon from "@/icons/RightArrowIcon.astro"
+import ShortArrowRight from "@/icons/ShortArrowRight.astro"
+
+const buttons = ["Playlists", "Artists", "Albums", "Podcasts & Shows"]
+---
+
+<header class="px-4 pt-5 pb-2">
+	<div class="flex gap-2 text-zinc-400 ml-2">
+		<LibraryIcon className="h-6 fill-zinc-400 " />
+		<p class="font-semibold">Your Library</p>
+
+		<div class="flex gap-2 ml-auto">
+			<span class="btn-icon grid place-content-center h-8 w-8 rounded-full cursor-pointer">
+				<PlusIcon className="h-4 fill-white/80" />
+			</span>
+
+			<span class="btn-icon grid place-content-center h-8 w-8 rounded-full cursor-pointer">
+				<RightArrowIcon className="h-4 fill-white/80" />
+			</span>
+		</div>
+	</div>
+
+	<div class="buttons relative flex gap-2 text-nowrap text-white text-sm overflow-x-auto mt-6">
+		{buttons.map((btn) => <button class="bg-white/15 py-1.5 px-3 rounded-full">{btn}</button>)}
+		<span class="absolute right-0 h-full w-1/2 bg-linear-to-r from-transparent to-cod-gray-950"
+		></span>
+		<span
+			class="s-left-arrow absolute right-0 grid place-content-center bg-shark-950 text-zinc-400 h-full aspect-square rounded-full cursor-pointer transition-colors"
+		>
+			<ShortArrowRight className="h-4 fill-current" />
+		</span>
+	</div>
+</header>
+
+<style>
+	.buttons::-webkit-scrollbar {
+		display: none;
+	}
+
+	.buttons {
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+
+	.btn-icon:hover {
+		background: #1f1f1f;
+	}
+
+	.s-left-arrow:hover {
+		background: #292929;
+		color: white;
+	}
+</style>

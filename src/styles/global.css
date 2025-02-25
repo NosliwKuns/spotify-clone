@@ -1,1 +1,21 @@
 @import "tailwindcss";
+@font-face {
+	font-family: "SpotifyMixUI";
+	src: url("https://encore.scdn.co/fonts/SpotifyMixUI-Regular-cc3b1de388efa4cbca6c75cebc24585e.woff2")
+		format("woff2");
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+	font-family: "SpotifyMixUI", sans-serif;
+}
+
+@theme {
+	--color-cod-gray-950: #121212;
+
+	--color-shark-950: #1f1f1f;
+
+	--color-mine-shaft-800: #454545;
+	--color-mine-shaft-950: #2a2a2a;
+}

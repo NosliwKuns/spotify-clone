@@ -1,6 +1,6 @@
 ---
-import SidebarLeft from "@/components/SidebarLeft.astro"
-import "./src/styles/global.css"
+import SidebarLeft from "./components/sidebar-left/SidebarLeft.astro"
+import "@/styles/global.css"
 
 interface Props {
 	title: string
@@ -19,17 +19,19 @@ const { title } = Astro.props
 		<title>{title}</title>
 	</head>
 	<body>
-		<main id="app" class="relative h-screen p-2 gap-2">
-			<header class="[grid-area:header] bg-gray-200">HEADER</header>
-			<aside class="[grid-area:sidebar-left] flex flex-col overflow-y-auto bg-gray-200">
-				<SidebarLeft />
-			</aside>
-			<main class="[grid-area:main] rounded-lg bg-zinc-900 overflow-y-auto text-white">
+		<div id="app" class="h-screen p-2 gap-2 hover:bg-red-300">
+			<header class="[grid-area:header] text-zinc-400">HEADER</header>
+			<SidebarLeft />
+			<main class="[grid-area:main] bg-zinc-900/80 text-zinc-400 rounded-lg overflow-y-auto">
 				MAIN
 			</main>
-			<aside class="[grid-area:sidebar-right] bg-gray-200">SIDEBAR RIGHT</aside>
-			<footer class="[grid-area:player] h-[100px] bg-black text-white">PLAYER</footer>
-		</main>
+			<aside
+				class="[grid-area:sidebar-right] bg-zinc-900/80 text-zinc-400 rounded-lg overflow-y-auto"
+			>
+				SIDEBAR RIGHT
+			</aside>
+			<footer class="[grid-area:player] text-zinc-400">PLAYER</footer>
+		</div>
 	</body>
 </html>
 
@@ -48,7 +50,7 @@ const { title } = Astro.props
 			"header header header"
 			"sidebar-left main sidebar-right"
 			"player player player";
-		grid-template-columns: clamp(280px, 25%, 420px) 1fr clamp(280px, 25%, 420px);
+		grid-template-columns: clamp(280px, 20%, 420px) 1fr clamp(280px, 20%, 420px);
 		grid-template-rows: auto 1fr auto;
 	}
 </style>
